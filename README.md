@@ -11,3 +11,9 @@ PythonでScrapingのテストコード
 ```sh
 pip install -r requirements.txt
 ```
+## memo
+### requirements.txtの生成方法
+
+```sh
+pip freeze > requirements.txt
+```
