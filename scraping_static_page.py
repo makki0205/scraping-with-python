@@ -4,6 +4,8 @@ import urllib.request
 import chardet
 import pandas as pd
 from bs4 import BeautifulSoup
+TARGET_URL = "http://konojunya.com/"
+CSV_PATH = "konojunya.csv"
 
 def scraping(url, output_name):
 	# get a HTML response
@@ -19,7 +21,7 @@ def scraping(url, output_name):
 	# extract
 	title = soup.find("title").text
 	h1_data = soup.find("h1").text
-	
+
 	header = soup.find("head")
 	description = header.find("meta", attrs={"name": "description"})
 	description_content = description.attrs['content']
@@ -33,4 +35,4 @@ def scraping(url, output_name):
 	df.to_csv(output_name,index=None)
 
 if __name__ == '__main__':
-	scraping("http://konojunya.com/", "konojunya.csv")
+	scraping(TARGET_URL, CSV_PATH)
